@@ -148,7 +148,9 @@ Requires=ntpd.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/ntp-wait -n 5
+ExecStart=/usr/bin/systemctl stop ntpd 
+ExecStart=/usr/bin/ntpd -gq
+ExecStart=/usr/bin/systemctl start ntpd
 
 [Install]
 WantedBy=multi-user.target
